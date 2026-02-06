@@ -1,0 +1,100 @@
+---
+const services = [
+  {
+    title: "Civil Construction",
+    description: "Foundation, Bridge Work, RCC Roads, Building Construction, Water Drainage Systems",
+    icon: "🏗️",
+    projects: 200,
+    link: "/services"
+  },
+  {
+    title: "Mechanical Services",
+    description: "Fabrication, Erection, Pipeline Specialists, Structural Projects & Maintenance",
+    icon: "⚙️",
+    projects: 150,
+    link: "/services"
+  },
+  {
+    title: "Solar Energy",
+    description: "Solar Project Installation, Commissioning, Tracker Systems, Maintenance",
+    icon: "☀️",
+    projects: 80,
+    link: "/services"
+  },
+  {
+    title: "HVAC Systems",
+    description: "Heating, Ventilation, Air Conditioning Maintenance & Operations",
+    icon: "❄️",
+    projects: 70,
+    link: "/services"
+  },
+  {
+    title: "Electrical Works",
+    description: "Industrial & Building Electrical, Substation Work, Solar AC/DC Systems",
+    icon: "⚡",
+    projects: 100,
+    link: "/services"
+  },
+  {
+    title: "Manpower Supply",
+    description: "Skilled & Unskilled Manpower for Construction & Maintenance Projects",
+    icon: "👷",
+    projects: 500,
+    link: "/services"
+  }
+]
+---
+
+<section class="section bg-white">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-semibold mb-4">
+        Our Expertise
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        Comprehensive <span class="text-primary-600">Engineering Solutions</span>
+      </h2>
+      <p class="text-lg text-slate-600">
+        We provide end-to-end solutions across multiple engineering domains with precision and excellence.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <div class="group bg-white border border-slate-200 rounded-xl p-6 hover:border-primary-300 hover:shadow-lg transition-all duration-300">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-4xl">{service.icon}</div>
+            <div class="text-sm font-semibold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+              {service.projects}+ Projects
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+          <p class="text-slate-600 mb-4">{service.description}</p>
+          
+          <a 
+            href={service.link} 
+            class="inline-flex items-center text-primary-600 font-medium group-hover:text-primary-700 transition-colors"
+          >
+            Explore Services
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a 
+        href="/services" 
+        class="inline-flex items-center px-8 py-3 bg-slate-900 text-white hover:bg-slate-800 rounded-lg font-semibold transition-colors duration-300"
+      >
+        View All Services
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

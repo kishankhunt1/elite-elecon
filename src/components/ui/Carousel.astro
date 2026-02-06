@@ -1,0 +1,377 @@
+---
+interface CarouselItem {
+  id: number;
+  image: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  location?: string;
+  type?: string;
+}
+
+interface Props {
+  items: CarouselItem[];
+  type?: 'hero' | 'projects' | 'testimonials';
+  autoPlay?: boolean;
+  delay?: number;
+  showNavigation?: boolean;
+  showPagination?: boolean;
+  effect?: 'slide' | 'fade' | 'cube' | 'coverflow' | 'flip';
+  slidesPerView?: number | string;
+  spaceBetween?: number;
+  breakpoints?: Record<string, any>;
+  loop?: boolean;
+  speed?: number;
+}
+
+const {
+  items = [],
+  type = 'hero',
+  autoPlay = true,
+  delay = 5000,
+  showNavigation = true,
+  showPagination = true,
+  effect = 'slide',
+  slidesPerView = 1,
+  spaceBetween = 30,
+  breakpoints = {},
+  loop = true,
+  speed = 800
+} = Astro.props;
+
+// Create a unique ID for this carousel instance
+const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
+
+// Prepare breakpoints data as JSON string
+const breakpointsData = JSON.stringify(
+  Object.keys(breakpoints).length > 0 
+    ? breakpoints 
+    : type === 'projects' 
+      ? {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 }
+        }
+      : {}
+);
+---
+
+<div 
+  id={carouselId}
+  class={`carousel-container carousel-${type} relative`}
+  data-type={type}
+  data-autoplay={autoPlay}
+  data-delay={delay}
+  data-show-navigation={showNavigation}
+  data-show-pagination={showPagination}
+  data-slides-per-view={slidesPerView}
+  data-space-between={spaceBetween}
+  data-loop={loop}
+  data-speed={speed}
+  data-effect={effect}
+  data-breakpoints={breakpointsData}
+>
+  <swiper-container
+    init="false"
+    class="swiper-custom"
+    {effect}
+    {loop}
+    speed={speed}
+    slides-per-view={slidesPerView}
+    space-between={spaceBetween}
+    navigation={showNavigation}
+    pagination={showPagination}
+    autoplay-delay={delay}
+    autoplay-disable-on-interaction="false"
+  >
+    {items.map((item) => (
+      <swiper-slide class="h-full">
+        {type === 'hero' ? (
+          <!-- Hero Carousel Slide -->
+          <div class="relative w-full h-[600px] md:h-[700px] overflow-hidden">
+            <img 
+              src={item.image} 
+              alt={item.title || 'Carousel Image'}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent"></div>
+            
+            <div class="absolute inset-0 flex items-center">
+              <div class="container mx-auto px-4 md:px-8">
+                <div class="max-w-2xl">
+                  {item.subtitle && (
+                    <span class="inline-block px-4 py-1 bg-primary-500 text-white text-sm font-semibold rounded-full mb-4 animate-fade-in">
+                      {item.subtitle}
+                    </span>
+                  )}
+                  <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fade-in">
+                    {item.title}
+                  </h2>
+                  {item.description && (
+                    <p class="text-lg md:text-xl text-slate-200 mb-8 leading-relaxed animate-fade-in">
+                      {item.description}
+                    </p>
+                  )}
+                  {item.buttonText && (
+                    <div class="animate-fade-in">
+                      <a 
+                        href={item.buttonLink || '#'}
+                        class="btn-orange inline-flex items-center justify-center text-lg px-8 py-3 rounded-lg"
+                      >
+                        <span>{item.buttonText}</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : type === 'projects' ? (
+          <!-- Projects Carousel Slide -->
+          <div class="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-500 h-full">
+            <div class="relative h-64 overflow-hidden">
+              <img 
+                src={item.image} 
+                alt={item.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded-full">
+                  {item.type || item.subtitle}
+                </span>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">
+                {item.title}
+              </h3>
+              <div class="flex items-center text-slate-600 mb-3">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <span>{item.location || item.description}</span>
+              </div>
+              
+              <a 
+                href={item.buttonLink || '#'}
+                class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors"
+              >
+                View Project
+                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ) : (
+          <!-- Default Carousel Slide -->
+          <div class="relative h-full">
+            <img 
+              src={item.image} 
+              alt={item.title || 'Carousel Image'}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            {item.title && (
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 class="text-2xl font-bold text-white">{item.title}</h3>
+                {item.description && (
+                  <p class="text-white/90 mt-2">{item.description}</p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </swiper-slide>
+    ))}
+  </swiper-container>
+</div>
+
+<script>
+  import { register } from 'swiper/element/bundle';
+
+  // Register Swiper web components
+  register();
+
+  // Initialize the carousel after DOM is loaded
+  if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get all carousel containers
+      const carouselContainers = document.querySelectorAll('.carousel-container');
+      
+      carouselContainers.forEach((container) => {
+        const swiperEl = container.querySelector('swiper-container');
+        if (!swiperEl) return;
+        
+        // Get configuration from data attributes
+        const type = container.dataset.type || 'hero';
+        const autoPlay = container.dataset.autoplay === 'true';
+        const delay = parseInt(container.dataset.delay) || 5000;
+        const showNavigation = container.dataset.showNavigation === 'true';
+        const showPagination = container.dataset.showPagination === 'true';
+        const slidesPerView = container.dataset.slidesPerView || 1;
+        const spaceBetween = parseInt(container.dataset.spaceBetween) || 30;
+        const loop = container.dataset.loop === 'true';
+        const speed = parseInt(container.dataset.speed) || 800;
+        const effect = container.dataset.effect || 'slide';
+        
+        // Parse breakpoints from JSON
+        let breakpoints = {};
+        try {
+          breakpoints = JSON.parse(container.dataset.breakpoints || '{}');
+        } catch (e) {
+          console.error('Error parsing breakpoints:', e);
+        }
+        
+        // Default breakpoints if none provided
+        if (Object.keys(breakpoints).length === 0) {
+          breakpoints = {
+            640: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: type === 'hero' ? 1 : 2, spaceBetween: 25 },
+            1024: { slidesPerView: type === 'hero' ? 1 : 3, spaceBetween: 30 },
+            1280: { slidesPerView: type === 'hero' ? 1 : 4, spaceBetween: 35 }
+          };
+        }
+        
+        // Prepare configuration object
+        const params = {
+          effect: effect,
+          loop: loop,
+          speed: speed,
+          slidesPerView: slidesPerView,
+          spaceBetween: spaceBetween,
+          breakpoints: breakpoints,
+          autoplay: autoPlay ? {
+            delay: delay,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          } : false,
+          navigation: showNavigation,
+          pagination: showPagination ? {
+            clickable: true,
+            dynamicBullets: true
+          } : false
+        };
+        
+        // Assign parameters and initialize
+        Object.assign(swiperEl, params);
+        swiperEl.initialize();
+      });
+    });
+  }
+</script>
+
+<style>
+  /* Custom styles for Swiper */
+  swiper-container {
+    --swiper-navigation-color: white;
+    --swiper-pagination-color: var(--color-primary-500);
+    --swiper-pagination-bullet-size: 12px;
+    --swiper-pagination-bullet-inactive-color: white;
+    --swiper-pagination-bullet-inactive-opacity: 0.5;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 6px;
+  }
+
+  swiper-container::part(button-next):hover,
+  swiper-container::part(button-prev):hover {
+    background: var(--color-primary-600);
+    transform: scale(1.1);
+  }
+
+swiper-container::part(button-next),
+swiper-container::part(button-prev) {
+  background: rgba(255, 88, 4, 0.8);
+  padding: 10px;
+  opacity: 0.75;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  top: auto;
+  bottom: 20px;
+  transform: none;
+}
+
+/* Horizontal positioning */
+
+.carousel-hero swiper-container::part(button-next),
+.carousel-hero swiper-container::part(button-prev) {
+  bottom: 40px;
+}
+
+
+  /* Custom pagination */
+  swiper-container::part(pagination) {
+    bottom: 20px;
+  }
+
+  .carousel-hero swiper-container::part(pagination) {
+    bottom: 40px;
+  }
+
+  swiper-container::part(bullet) {
+    width: 12px;
+    height: 12px;
+    background: white;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  swiper-container::part(bullet-active) {
+    background: var(--color-primary-500);
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  /* Animation for hero content */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+swiper-container::part(button-next), swiper-container::part(button-prev) {
+    bottom: 15px;
+    width: 20px;
+    height: 20px;
+}
+swiper-container::part(button-next) {
+    right: 20px;
+}
+
+swiper-container::part(button-prev) {
+    left: 20px;
+}
+
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+   swiper-container::part(button-next), swiper-container::part(button-prev) {
+        bottom: 15px;
+        width: 10px;
+        height: 10px;
+    }
+    .carousel-hero swiper-container::part(pagination) {
+      bottom: 20px;
+    }
+  }
+
+</style>

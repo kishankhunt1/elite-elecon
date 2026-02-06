@@ -1,0 +1,77 @@
+---
+import PartnerCarousel from "../ui/PartnerCarousel.astro";
+import { partners } from "../../utils/constant";
+
+const clients = [
+  "Blue Star Ltd.",
+  "Shreeji Krupa Con.",
+  "Jay Hanuman Infra.",
+  "Godrej & Boyce Co. Ltd.",
+  "Patel Infrastructure",
+  "CMC Project PVT. Ltd.",
+  "BD Buildcon",
+  "Sai Fabrication",
+  "L & T Ltd.",
+  "Dilip BuildCon Ltd.",
+  "KEC International Ltd.",
+  "Adani Green Energy",
+  "Onix Renewable Ltd.",
+  "EHES Ltd.",
+];
+---
+
+<section class="section bg-white">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div
+        class="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-semibold mb-4"
+      >
+        Trusted Partners
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        Our <span class="text-primary-600">Valued Customers</span>
+      </h2>
+      <p class="text-lg text-slate-600">
+        We take pride in serving some of India's most prestigious companies
+        across various sectors.
+      </p>
+    </div>
+
+    <section>
+      <PartnerCarousel
+        partners={partners}
+        autoplay={true}
+        autoplaySpeed={3000}
+        slidesPerView={6}
+        slidesPerViewMobile={1}
+      />
+    </section>
+  </div>
+
+  <!-- Stats -->
+  <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+    <div class="text-center p-6 bg-primary-50 rounded-xl">
+      <div class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">15</div>
+      <div class="text-lg font-semibold text-slate-800">Valued Customers</div>
+      <p class="text-slate-600 mt-2">Prestigious companies across India</p>
+    </div>
+
+    <div class="text-center p-6 bg-primary-50 rounded-xl">
+      <div class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">
+        500+
+      </div>
+      <div class="text-lg font-semibold text-slate-800">Projects Completed</div>
+      <p class="text-slate-600 mt-2">Successfully delivered nationwide</p>
+    </div>
+
+    <div class="text-center p-6 bg-primary-50 rounded-xl">
+      <div class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">
+        237+
+      </div>
+      <div class="text-lg font-semibold text-slate-800">
+        Skilled Professionals
+      </div>
+      <p class="text-slate-600 mt-2">Dedicated team members</p>
+    </div>
+  </div>
+</section>

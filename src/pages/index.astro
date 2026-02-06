@@ -1,0 +1,172 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import ServicesSection from "../components/sections/ServicesSection.astro";
+import ProjectsSection from "../components/sections/ProjectsSection.astro";
+import ClientSection from "../components/sections/ClientSection.astro";
+import JourneySection from "../components/sections/JourneySection.astro";
+import CTASection from "../components/sections/CTASection.astro";
+import ProjectsGallery from "../components/ui/ProjectsGallery.astro";
+
+const projects = [
+  {
+    id: 1,
+    name: "Blue Star Ltd.",
+    location: "Junagadh",
+    type: "HVAC Installation",
+    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1581091226033-d5c2c8e0506f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Complete HVAC system installation for industrial complex",
+    duration: "3 Months",
+    team: "50+ Members",
+    completion: "100%",
+    year: "2023"
+  },
+  {
+    id: 2,
+    name: "Shreeji Krupa Con.",
+    location: "Rajula",
+    type: "Civil Construction",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Substation foundation and civil works",
+    duration: "4 Months",
+    team: "45+ Members",
+    completion: "100%",
+    year: "2023"
+  },
+  {
+    id: 3,
+    name: "KEC International Ltd.",
+    location: "Junagadh",
+    type: "Electrical Works",
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Electrical infrastructure development",
+    duration: "5 Months",
+    team: "60+ Members",
+    completion: "100%",
+    year: "2023"
+  },
+  {
+    id: 4,
+    name: "Adani Green Energy",
+    location: "Khavda",
+    type: "Solar Project",
+    image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Solar farm installation and commissioning",
+    duration: "6 Months",
+    team: "80+ Members",
+    completion: "100%",
+    year: "2024"
+  },
+  {
+    id: 5,
+    name: "Onix Renewable Ltd.",
+    location: "Sidhpur",
+    type: "Solar Installation",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Large scale solar power plant construction",
+    duration: "7 Months",
+    team: "75+ Members",
+    completion: "100%",
+    year: "2024"
+  },
+  {
+    id: 6,
+    name: "Dilip BuildCon Ltd.",
+    location: "Hirasar",
+    type: "Bridge Construction",
+    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Box culvert and bridge construction",
+    duration: "8 Months",
+    team: "65+ Members",
+    completion: "100%",
+    year: "2023"
+  },
+  {
+    id: 7,
+    name: "L & T Ltd.",
+    location: "Vadodara",
+    type: "Industrial Construction",
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "Industrial plant construction and maintenance",
+    duration: "9 Months",
+    team: "90+ Members",
+    completion: "100%",
+    year: "2023"
+  },
+  {
+    id: 8,
+    name: "Patel Infrastructure",
+    location: "Bharuch",
+    type: "Road Construction",
+    image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+    ],
+    description: "RCC road construction project",
+    duration: "4 Months",
+    team: "55+ Members",
+    completion: "100%",
+    year: "2024"
+  }
+];
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+  <HeroSection />
+  <AboutSection />
+  <ServicesSection />
+  <ProjectsGallery projects={projects} />
+  <ClientSection />
+  <JourneySection />
+  <CTASection />
+
+
+</Layout>

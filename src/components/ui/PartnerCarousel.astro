@@ -1,0 +1,106 @@
+---
+import { Swiper, SwiperWrapper, SwiperSlide } from "astro-swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
+interface Partner {
+  id: number;
+  name: string;
+  logo?: string;
+  website?: string;
+}
+
+interface Props {
+  partners: Partner[];
+  autoplay?: boolean;
+  autoplaySpeed?: number;
+  showNavigation?: boolean;
+  showPagination?: boolean;
+  slidesPerView?: number;
+  slidesPerViewMobile?: number;
+  spaceBetween?: number;
+  loop?: boolean;
+  centeredSlides?: boolean;
+}
+
+const {
+  partners = [],
+  autoplay = true,
+  autoplaySpeed = 2000,
+  showNavigation = true,
+  showPagination = false,
+  slidesPerView = 6,
+  slidesPerViewMobile = 2,
+  spaceBetween = 20,
+  loop = true,
+  centeredSlides = false
+} = Astro.props;
+---
+
+<Swiper
+  options={{
+    autoplay: autoplay ? {
+      delay: autoplaySpeed,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    } : false,
+    loop: loop,
+    slidesPerView: slidesPerView,
+    spaceBetween: spaceBetween,
+    centeredSlides: centeredSlides,
+    navigation: showNavigation,
+    pagination: showPagination ? {
+      clickable: true,
+    } : false,
+    breakpoints: {
+      320: {
+        slidesPerView: slidesPerViewMobile,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: slidesPerView,
+        spaceBetween: spaceBetween,
+      },
+    },
+    grabCursor: true,
+    speed: 800,
+  }}
+>
+  <SwiperWrapper>
+    {partners.map((partner) => (
+      <SwiperSlide>
+        <div class="flex items-center justify-center h-32 p-4 bg-white border border-slate-200 rounded-xl hover:border-orange-300 hover:shadow-md transition-all duration-300">
+          {partner.website ? (
+            <a 
+              href={partner.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex items-center justify-center w-full h-full"
+              aria-label={`Visit ${partner.name}`}
+            >
+              <div class="text-center">
+                <div class="text-xl font-bold text-slate-800 mb-1">{partner.name.split(' ')[0]}</div>
+                <div class="text-sm text-slate-500">{partner.name.split(' ').slice(1).join(' ')}</div>
+              </div>
+            </a>
+          ) : (
+            <div class="text-center">
+              <div class="text-xl font-bold text-slate-800 mb-1">{partner.name.split(' ')[0]}</div>
+              <div class="text-sm text-slate-500">{partner.name.split(' ').slice(1).join(' ')}</div>
+            </div>
+          )}
+        </div>
+      </SwiperSlide>
+    ))}
+  </SwiperWrapper>
+</Swiper>

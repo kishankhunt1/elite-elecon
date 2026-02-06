@@ -1,0 +1,98 @@
+---
+const milestones = [
+  {
+    year: "2010",
+    title: "Company Founded",
+    description: "Elite Elecon established with focus on mechanical services"
+  },
+  {
+    year: "2012",
+    title: "Civil Division Launched",
+    description: "Expanded into civil construction services"
+  },
+  {
+    year: "2015",
+    title: "Solar Division Started",
+    description: "Entered renewable energy sector with solar projects"
+  },
+  {
+    year: "2018",
+    title: "National Recognition",
+    description: "Awarded for excellence in construction services"
+  },
+  {
+    year: "2020",
+    title: "HVAC Specialization",
+    description: "Added HVAC maintenance and operations division"
+  },
+  {
+    year: "2023",
+    title: "500+ Projects",
+    description: "Crossed milestone of 500 successful projects"
+  }
+]
+---
+
+<section class="section bg-slate-900 text-white">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center px-4 py-2 bg-primary-500/20 text-primary-300 rounded-full text-sm font-semibold mb-4">
+        Our Journey
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Building Excellence <span class="text-primary-400">Since 2010</span>
+      </h2>
+      <p class="text-lg text-slate-300">
+        A journey of growth, innovation, and unwavering commitment to quality in construction and engineering.
+      </p>
+    </div>
+    
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-500/30 hidden md:block"></div>
+      
+      <!-- Milestones -->
+      <div class="space-y-12">
+        {milestones.map((milestone, index) => (
+          <div class={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <div class={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+              <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                <div class="text-primary-400 font-bold text-lg mb-2">{milestone.year}</div>
+                <h3 class="text-xl font-bold mb-2">{milestone.title}</h3>
+                <p class="text-slate-300">{milestone.description}</p>
+              </div>
+            </div>
+            
+            <!-- Timeline Dot -->
+            <div class="relative z-10 my-6 md:my-0">
+              <div class="w-6 h-6 bg-primary-500 rounded-full border-4 border-slate-900"></div>
+              <div class="absolute inset-0 animate-ping bg-primary-500/30 rounded-full"></div>
+            </div>
+            
+            <div class={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
+              <div class="h-full flex items-center justify-center">
+                <div class="w-16 h-16 flex items-center justify-center bg-primary-500/10 rounded-full">
+                  <div class="text-2xl font-bold text-primary-400">{index + 1}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- CTA -->
+    <div class="mt-16 text-center">
+      <a 
+        href="/about" 
+        class="inline-flex items-center px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-colors duration-300 text-lg"
+      >
+        Discover Our Full Story
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

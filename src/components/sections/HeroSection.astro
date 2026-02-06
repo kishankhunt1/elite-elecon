@@ -1,0 +1,73 @@
+---
+import Carousel from '../ui/Carousel.astro';
+
+const heroItems = [
+  {
+    id: 1,
+    image: '/engineer-solar.webp',
+    title: 'Building India\'s Future With Precision & Excellence',
+    subtitle: 'EST. 2010',
+    description: 'ELITE ELECON - Your trusted partner for Mechanical Services, Civil Work, Solar & HVAC solutions.',
+    buttonText: 'View Our Projects',
+    buttonLink: '/projects'
+  },
+  {
+    id: 2,
+    image: '/civil-work-home.webp',
+    title: 'Expert Civil Construction Services',
+    subtitle: 'CIVIL WORK',
+    description: 'Specialists in Foundation, Bridge Construction, RCC Roads, and Building Works.',
+    buttonText: 'Explore Civil Services',
+    buttonLink: '/services'
+  },
+  {
+    id: 3,
+    image: '/solar-energy-home.avif',
+    title: 'Solar Energy Solutions',
+    subtitle: 'RENEWABLE ENERGY',
+    description: 'Leading solar project installation and commissioning services across India.',
+    buttonText: 'Learn About Solar',
+    buttonLink: '/services'
+  },
+  {
+    id: 4,
+    image: '/hvac-home.avif',
+    title: 'HVAC & Mechanical Excellence',
+    subtitle: 'HVAC SPECIALISTS',
+    description: 'Professional HVAC maintenance, operation, and mechanical fabrication services.',
+    buttonText: 'HVAC Services',
+    buttonLink: '/services'
+  }
+];
+---
+
+<section class="relative overflow-hidden">
+  <Carousel 
+    items={heroItems}
+    type="hero"
+    effect="fade"
+    autoPlay={true}
+    delay={5000}
+    showNavigation={true}
+    showPagination={true}
+    slidesPerView={1}
+    loop={true}
+    speed={1000}
+  />
+  
+  <!-- Stats Bar Below Carousel -->
+  <div class="bg-white shadow-lg">
+    <div class="container mx-auto px-4 md:px-8 py-6">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-bold text-primary-600">500+</div>
+          <div class="text-sm text-slate-600">Projects Completed</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-bold text-primary-600">10+</div>
+          <div class="text-sm text-slate-600">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

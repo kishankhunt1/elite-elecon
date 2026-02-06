@@ -1,0 +1,161 @@
+---
+const projects = {
+  completed: [
+    {
+      id: 1,
+      name: "Blue Star Ltd.",
+      location: "Junagadh",
+      type: "HVAC Installation",
+      image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80",
+      description: "Complete HVAC system installation for industrial complex"
+    },
+    {
+      id: 2,
+      name: "Shreeji Krupa Con.",
+      location: "Rajula",
+      type: "Civil Construction",
+      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80",
+      description: "Substation foundation and civil works"
+    },
+    {
+      id: 3,
+      name: "KEC International Ltd.",
+      location: "Junagadh",
+      type: "Electrical Works",
+      image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80",
+      description: "Electrical infrastructure development"
+    },
+    {
+      id: 4,
+      name: "Adani Green Energy",
+      location: "Khavda",
+      type: "Solar Project",
+      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80",
+      description: "Solar farm installation and commissioning"
+    }
+  ],
+  running: [
+    {
+      id: 5,
+      name: "Onix Renewable Ltd.",
+      location: "Sidhpur",
+      type: "Solar Installation",
+      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80",
+      description: "Large scale solar power plant construction"
+    },
+    {
+      id: 6,
+      name: "Dilip BuildCon Ltd.",
+      location: "Hirasar",
+      type: "Bridge Construction",
+      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
+      description: "Box culvert and bridge construction"
+    },
+    {
+      id: 7,
+      name: "L & T Ltd.",
+      location: "Vadodara",
+      type: "Industrial Construction",
+      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
+      description: "Industrial plant construction and maintenance"
+    },
+    {
+      id: 8,
+      name: "Patel Infrastructure",
+      location: "Bharuch",
+      type: "Road Construction",
+      image: "https://images.unsplash.com/photo-1588517608415-0f6722c62c85?auto=format&fit=crop&w=800&q=80",
+      description: "RCC road construction project"
+    }
+  ]
+}
+---
+
+<section class="section bg-slate-50">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-semibold mb-4">
+        Our Portfolio
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        Featured <span class="text-primary-600">Projects</span>
+      </h2>
+      <p class="text-lg text-slate-600">
+        Showcasing our successful projects across India with excellence and precision.
+      </p>
+    </div>
+    
+    <!-- Project Tabs -->
+    <div class="flex justify-center mb-8">
+      <div class="inline-flex rounded-lg border border-slate-200 p-1 bg-white">
+        <button 
+          class="px-6 py-2 rounded-md font-medium transition-all duration-300 data-[active=true]:bg-primary-500 data-[active=true]:text-white"
+          data-active={true}
+        >
+          Completed Projects
+        </button>
+        <button 
+          class="px-6 py-2 rounded-md font-medium transition-all duration-300 data-[active=false]:hover:bg-slate-100"
+          data-active={false}
+        >
+          Running Projects
+        </button>
+      </div>
+    </div>
+    
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      {projects.completed.slice(0, 4).map((project) => (
+        <div class="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="relative h-48 overflow-hidden">
+            <img 
+              src={project.image} 
+              alt={project.name}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded-full">
+                {project.type}
+              </span>
+            </div>
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{project.name}</h3>
+            <div class="flex items-center text-slate-600 mb-3">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>{project.location}</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">{project.description}</p>
+            
+            <a 
+              href={`/projects/${project.id}`}
+              class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors"
+            >
+              View Details
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center">
+      <a 
+        href="/projects" 
+        class="btn-orange inline-flex items-center justify-center text-lg px-8 py-3"
+      >
+        Explore All Projects
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
