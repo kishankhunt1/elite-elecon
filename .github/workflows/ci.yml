@@ -1,4 +1,4 @@
-name: CI/CD
+name: Astro CI
 
 on:
   push:
