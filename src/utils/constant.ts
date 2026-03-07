@@ -1,15 +1,15 @@
 export const data = {
-  email: "elite.elecon04@gmail.com",
-  mobile: "+919898562624",
-  mobile2: "+918511114499",
-  address: "2, First Floor, Diamond Complex, Stand Chowk, Jetpur, 360370",
+  email: " info@eliteelecon.com",
+  mobile: "+917990128029",
+  mobile2: null,
+  address: "2, First Floor, Raiyaraj Complex, Amarnagar Road, Jetpur, 360370",
   businessHours: "Mon-Sat: 8:00 AM - 6:00 PM",
   socialMedia: {
-    facebook: "#",
-    twitter: "#",
-    instagram: "#",
-    linkedin: "#",
-    youtube: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61582222790295&sfnsn=wa",
+    twitter: "",
+    instagram: "https://www.instagram.com/eliteelecon",
+    linkedin: "https://www.linkedin.com/company/eliteelecon/",
+    youtube: "https://youtube.com/@eliteelecon?si=gN-FPAYHUKaug2Fo",
   },
 };
 
@@ -18,71 +18,52 @@ export const partners = [
   {
     id: 1,
     name: "Blue Star Ltd.",
-    website: "https://www.bluestarindia.com",
-  },
-  {
-    id: 2,
-    name: "Shreeji Krupa Con.",
-    website: "#",
-  },
-  {
-    id: 3,
-    name: "Jay Hanuman Infra.",
-    website: "#",
+    logo: "/companies/logos/blue-star-logo.webp",
   },
   {
     id: 4,
     name: "Godrej & Boyce Co. Ltd.",
-    website: "https://www.godrej.com",
+    logo: "/companies/logos/godrej_logo.png",
+
   },
   {
     id: 5,
     name: "Patel Infrastructure",
-    website: "#",
-  },
-  {
-    id: 6,
-    name: "CMC Project PVT. Ltd.",
-    website: "#",
+    logo: "/companies/logos/patel_infra.png",
   },
   {
     id: 7,
     name: "BD Buildcon",
-    website: "#",
-  },
-  {
-    id: 8,
-    name: "Sai Fabrication",
-    website: "#",
+    logo: "/companies/logos/bd-buildcon.png",
   },
   {
     id: 9,
     name: "L & T Ltd.",
-    website: "https://www.larsentoubro.com",
+    logo: "/companies/logos/L-and-T-logo.png",
   },
   {
     id: 10,
     name: "Dilip BuildCon Ltd.",
-    website: "#",
+    logo: "/companies/logos/dilip_buildcon.png",
   },
   {
     id: 11,
     name: "KEC International Ltd.",
-    website: "https://www.kecrpg.com",
+    logo: "/companies/logos/kec_logo.png",
   },
   {
     id: 12,
     name: "Adani Green Energy",
-    website: "https://www.adanigreenenergy.com",
+    logo: "/companies/logos/adani2_logo.png",
   },
   {
     id: 13,
     name: "Onix Renewable Ltd.",
-    website: "#",
+    logo: "/companies/logos/onix_logo.png",
   },
   {
     id: 14,
-    name: "EHES Ltd.",
-    website: "#",
+    name: "Essar Ltd.",
+    logo: "/companies/logos/Essar.png",
   },
 ];
