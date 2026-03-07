@@ -79,7 +79,7 @@ const {
   <SwiperWrapper>
     {partners.map((partner) => (
       <SwiperSlide>
-        <div class="flex items-center justify-center h-32 p-4 bg-white border border-slate-200 rounded-xl hover:border-orange-300 hover:shadow-md transition-all duration-300">
+        <div class="flex items-center justify-center h-32 p-4 bg-gray-300 border border-slate-200 rounded-xl hover:border-orange-300 hover:shadow-md transition-all duration-300">
           {partner.website ? (
             <a 
               href={partner.website} 
@@ -95,8 +95,7 @@ const {
             </a>
           ) : (
             <div class="text-center">
-              <div class="text-xl font-bold text-slate-800 mb-1">{partner.name.split(' ')[0]}</div>
-              <div class="text-sm text-slate-500">{partner.name.split(' ').slice(1).join(' ')}</div>
+              <img src={partner.logo} alt={partner.name} class="max-h-full max-w-full object-contain" />
             </div>
           )}
         </div>
