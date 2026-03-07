@@ -1,13 +1,6 @@
 ---
 import {data} from '../../utils/constant'
 const currentPath = Astro.url.pathname;
-// universal active checker
-const isActive = (path: string) => {
-  if (path === "/") {
-    return currentPath === "/";
-  }
-  return currentPath === path || currentPath.startsWith(path + "/");
-};
 ---
 
 <div
@@ -228,7 +221,7 @@ const isActive = (path: string) => {
         <nav class="flex items-center space-x-1">
           <a
             href="/"
-            class={`nav-link group ${isActive('/') ? 'active' : ''}`}>
+            class={`nav-link group ${currentPath === '/' ? 'active' : ''}`}>
             <svg
               class="nav-icon"
               fill="none"
@@ -246,7 +239,7 @@ const isActive = (path: string) => {
             <span class="nav-underline"></span>
           </a>
 
-          <a href="/projects" class={`nav-link group ${isActive('/projects') ? 'active' : ''}`}>
+          <a href="/projects" class={`nav-link group ${currentPath === '/projects' ? 'active' : ''}`}>
             <svg
               class="nav-icon"
               fill="none"
@@ -264,7 +257,7 @@ const isActive = (path: string) => {
             <span class="nav-underline"></span>
           </a>
 
-          <a href="/services" class={`nav-link group ${isActive('/services') ? 'active' : ''}`}>
+          <a href="/services" class={`nav-link group ${currentPath === '/services' ? 'active' : ''}`}>
             <svg
               class="nav-icon"
               fill="none"
@@ -281,7 +274,7 @@ const isActive = (path: string) => {
             <span class="nav-underline"></span>
           </a>
 
-          <a href="/about" class={`nav-link group ${isActive('/about') ? 'active' : ''}`}>
+          <a href="/about" class={`nav-link group ${currentPath === '/about' ? 'active' : ''}`}>
             <svg
               class="nav-icon"
               fill="none"
@@ -299,7 +292,7 @@ const isActive = (path: string) => {
             <span class="nav-underline"></span>
           </a>
 
-          <a href="/contact" class={`nav-link group ${isActive('/contact') ? 'active' : ''}`}>
+          <a href="/contact" class={`nav-link group ${currentPath === '/contact' ? 'active' : ''}`}>
             <svg
               class="nav-icon"
               fill="none"
@@ -372,7 +365,7 @@ const isActive = (path: string) => {
     <div class="px-4 py-6 space-y-4">
       <!-- Mobile Navigation Links -->
       <div class="space-y-1">
-        <a href="/" class={`mobile-nav-link ${isActive('/') ? "active" : ""}`} @click="isOpen = false">
+        <a href="/" class={`mobile-nav-link ${currentPath === "/" ? "active" : ""}`} @click="isOpen = false">
           <svg
             class="w-5 h-5"
             fill="none"
@@ -389,7 +382,7 @@ const isActive = (path: string) => {
           <span>Home</span>
         </a>
 
-        <a href="/projects" class={`mobile-nav-link ${isActive('/projects') ? "active" : ""}`} @click="isOpen = false">
+        <a href="/projects" class={`mobile-nav-link ${currentPath === "/projects" ? "active" : ""}`} @click="isOpen = false">
           <svg
             class="w-5 h-5"
             fill="none"
@@ -406,7 +399,7 @@ const isActive = (path: string) => {
           <span>Projects</span>
         </a>
 
-        <a href="/services" class={`mobile-nav-link ${isActive('/services') ? "active" : ""}`} @click="isOpen = false">
+        <a href="/services" class={`mobile-nav-link ${currentPath === "/services" ? "active" : ""}`} @click="isOpen = false">
           <svg
             class="w-5 h-5"
             fill="none"
@@ -422,7 +415,7 @@ const isActive = (path: string) => {
           <span>Services</span>
         </a>
 
-        <a href="/about" class={`mobile-nav-link ${isActive('/about') ? "active" : ""}`} @click="isOpen = false">
+        <a href="/about" class={`mobile-nav-link ${currentPath === "/about" ? "active" : ""}`} @click="isOpen = false">
           <svg
             class="w-5 h-5"
             fill="none"
@@ -439,7 +432,7 @@ const isActive = (path: string) => {
           <span>About Us</span>
         </a>
 
-        <a href="/contact" class={`mobile-nav-link ${isActive('/contact') ? "active" : ""}`} @click="isOpen = false">
+        <a href="/contact" class={`mobile-nav-link ${currentPath === "/contact" ? "active" : ""}`} @click="isOpen = false">
           <svg
             class="w-5 h-5"
             fill="none"
