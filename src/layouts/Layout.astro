@@ -21,19 +21,38 @@ const jsonLd = {
   description:
     "Elite Elecon provides expert services in HVAC systems, civil construction, solar energy, and electrical infrastructure.",
   url: Astro.site || "https://eliteelecon.com/",
-  logo: new URL("/icons/favicon.svg", Astro.url),
+  logo: new URL("/icons/favicon.svg", Astro.url).toString(),
+  image: new URL("/engineers-about.webp", Astro.url).toString(),
   address: {
     "@type": "PostalAddress",
     streetAddress: data.address,
     addressLocality: "Jetpur",
     postalCode: "360370",
+    addressRegion: "Gujarat",
     addressCountry: "IN",
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: data.mobile,
-    contactType: "customer service",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "21.7617",
+    longitude: "70.6276",
   },
+  telephone: data.mobile,
+  email: data.email,
+  priceRange: "$$",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+  ],
+  sameAs: [
+    data.socialMedia.facebook,
+    data.socialMedia.instagram,
+    data.socialMedia.linkedin,
+    data.socialMedia.youtube,
+  ].filter(Boolean),
 };
 ---
 
