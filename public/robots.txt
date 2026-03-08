@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elite-elecon-eight.netlify.app/sitemap-index.xml
+Sitemap: https://eliteelecon.com/sitemap-index.xml

@@ -17,22 +17,23 @@ const { title, description, image } = Astro.props;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Elite Elecon",
-  "description": "Elite Elecon provides expert services in HVAC systems, civil construction, solar energy, and electrical infrastructure.",
-  "url": Astro.site || "https://elite-elecon-eight.netlify.app",
-  "logo": new URL("/icons/favicon.svg", Astro.url),
-  "address": {
+  name: "Elite Elecon",
+  description:
+    "Elite Elecon provides expert services in HVAC systems, civil construction, solar energy, and electrical infrastructure.",
+  url: Astro.site || "https://eliteelecon.com/",
+  logo: new URL("/icons/favicon.svg", Astro.url),
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": data.address,
-    "addressLocality": "Jetpur",
-    "postalCode": "360370",
-    "addressCountry": "IN"
+    streetAddress: data.address,
+    addressLocality: "Jetpur",
+    postalCode: "360370",
+    addressCountry: "IN",
   },
-  "contactPoint": {
+  contactPoint: {
     "@type": "ContactPoint",
-    "telephone": data.mobile,
-    "contactType": "customer service"
-  }
+    telephone: data.mobile,
+    contactType: "customer service",
+  },
 };
 ---
 
