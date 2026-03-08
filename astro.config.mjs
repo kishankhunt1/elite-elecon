@@ -7,7 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://elite-elecon-eight.netlify.app",
+  site: "https://eliteelecon.com/",
   integrations: [alpinejs(), sitemap()],
 
   vite: {
